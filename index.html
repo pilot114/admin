@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CP Admin Panel</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="./vendor/bootstrap-4.1.3.min.css">
+    <link rel="stylesheet" href="./vendor/bootstrap-vue-2.0.0.min.css"/>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+
+            <h2>CP Admin Panel</h2>
+
+            <b-row>
+                <b-col cols="2">
+                    <b-list-group>
+                        <b-list-group-item to="/project"> Код </b-list-group-item>
+                        <b-list-group-item to="/doc"> Документация </b-list-group-item>
+                        <b-list-group-item to="/components"> Компоненты </b-list-group-item>
+                        <b-list-group-item to="/api"> REST апи </b-list-group-item>
+                    </b-list-group>
+                </b-col>
+
+                <b-col>
+                    <transition name="fade" mode="out-in">
+                        <router-view></router-view>
+                    </transition>
+                </b-col>
+            </b-row>
+
+        </div>
+    </div>
+</body>
+
+<script src="./vendor/jquery-3.3.1.slim.min.js"></script>
+<script src="./vendor/popper-1.14.3.min.js"></script>
+<script src="./vendor/bootstrap-4.1.3.min.js"></script>
+
+<script src="./vendor/vue-2.5.17.min.js"></script>
+<script src="./vendor/vue-router-3.0.1.min.js"></script>
+<script src="./vendor/vuex-3.0.1.min.js"></script>
+
+<script src="./vendor/babel-polyfill-6.26.0.min.js"></script>
+<script src="./vendor/bootstrap-vue-2.0.0.min.js"></script>
+
+<script>
+    window.onload = function() {
+
+        const routes = [
+            { path: '/project', component: { template: '<b-alert variant="secondary" show>В разработке</b-alert>' } },
+            { path: '/doc', component: { template: '<b-alert show>Доки</b-alert>' } },
+            { path: '/components', component: { template: '<b-alert variant="success" show>Посмотреть компоненты (см. https://bootstrap-vue.js.org/docs/components/alert/)</b-alert>' } },
+            { path: '/api', component: { template: '<b-alert variant="danger" show>Инфа на основе роутинга</b-alert>' } }
+        ];
+
+        const router = new VueRouter({routes});
+
+        const app = new Vue({
+            router
+        }).$mount('#app');
+    };
+</script>
+</html>
